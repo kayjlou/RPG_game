@@ -4,14 +4,14 @@ let characters = {
     name: "Pikachu",
     hp: 150,
     attack: 15,
-    imageUrl: "assets/images/pikachu.jpg",
+    imageUrl: "assets/images/pikachu.png",
     enemyAttackBack: 15
   },
   Charmander: {
     name: "Charmander",
     hp: 150,
     attack: 15,
-    imageUrl: "assets/images/charmander.jpg",
+    imageUrl: "assets/images/charmander.png",
     enemyAttackBack: 15
   }
 };
@@ -19,9 +19,10 @@ let characters = {
 let attacker;
 
 //Holds characters that user did not select
-let opponents = [];
+let leftovers = [];
 
 //Populated when player chooses an opponent
+let opponent;
 
 //Keep track of turns during combat - used for calcuating player damage
 
@@ -31,10 +32,18 @@ let opponents = [];
 
 //This function renders a character card to the page
 //Will take in the character and area it is rendered to (update HTML)
-let renderCharacter = (characters, renderArea) => {};
+let renderCharacter = (character, renderArea) => {
+  let charDiv = document.createElement(div).className("character")
+  charDiv.append()
+};
+
 
 // This function will load all the characters into the character section to be selected
-let init = () => {};
+let init = () => {
+  for (let key in characters){
+    renderCharacter(characters[key], ".characters")
+  }
+};
 //Loop through the characters object and call the function that displays characters
 
 //Run game
