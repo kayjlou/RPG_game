@@ -1,20 +1,21 @@
 //Create an object that holds characters
-let characters = {
-  Pikachu: {
+let characters = [{
     name: "Pikachu",
     hp: 150,
     attack: 15,
-    imageUrl: "assets/images/pikachu.png",
-    enemyAttackBack: 15
-  },
-  Charmander: {
+    imageUrl: "assets/images/pikachu.jpeg",
+    enemyAttackBack: 15,
+    info: "I am Pika, I love to zap things"
+
+  },{
     name: "Charmander",
     hp: 150,
     attack: 15,
     imageUrl: "assets/images/charmander.png",
-    enemyAttackBack: 15
-  }
-};
+    enemyAttackBack: 15,
+    info: "I am charmander, I am weak against water"
+  
+  }]
 //Populates when user selects a character
 let attacker;
 
@@ -32,27 +33,45 @@ let opponent;
 
 //This function renders a character card to the page
 //Will take in the character and area it is rendered to (update HTML)
-let renderCharacter = (character, renderArea) => {
-  let charDiv = document.createElement(div).className("character")
-  charDiv.append()
+
+let renderCharacter = () => {
+  characters.forEach(char=>{
+    //create card
+    console.log(char)
+    let cardDiv = document.createElement('div')
+    cardDiv.innerHTML = ` 
+    <div class="card">
+        <div class="card-image">
+          <img class = "image" src="${char.imageUrl}">
+          <span class="card-title">Card Title</span>
+        </div>
+        <div class="card-content">
+          <p>${char.info}</p>
+        </div>
+        <div class="card-action">
+          <p> Attack : ${char.attack} </p>
+          <p> HP: ${char.attack} </p>
+          <button> Choose me! </button>
+        </div>
+      </div>`
+let charactersDiv = document.querySelector(".characterDiv")
+charactersDiv.append(cardDiv)
+  })
+  // let charDiv= document.querySelector(renderArea)
+  // let charImg= document.createElement("img")
+  // charImg.setAttribute('src', character.imageUrl)
+  // charDiv.append(charImg)
 };
 
 
-// This function will load all the characters into the character section to be selected
-let init = () => {
-  for (let key in characters){
-    renderCharacter(characters[key], ".characters")
-  }
-};
-//Loop through the characters object and call the function that displays characters
 
 //Run game
-init();
+renderCharacter();
 
 //This function will update the slected player or the current defender - if none it will also place the character based on the render area chosen
-let updateCharacter = (charObj, areaRender) = {
-  //empty area first so we can re-render new object
-}
+// 
+//   //empty area first so we can re-render new object
+// 
 
 //This function will render the available-to-attack enemeies. This should be run once after a character has been selected. 
 let renderEnemies = (oppArray) =>{
@@ -73,10 +92,10 @@ let reset = (resultMessage) =>{
 }
 
 //Build div that will display the victory/defeat message
-let 
+// let 
 
 //render the restart button and victory/defeat message to the page
 
 //function to clear the game message section
 
-LINE 120
+
