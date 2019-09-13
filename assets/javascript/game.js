@@ -56,7 +56,7 @@ let renderCharacter = () => {
     console.log(char)
     let cardDiv = document.createElement('div')
     cardDiv.innerHTML = ` 
-    <div class="col s12 m3">
+    
     <div class="card">
         <div class="card-image">
           <img class = "image" src="${char.imageUrl}">
@@ -70,15 +70,12 @@ let renderCharacter = () => {
           <p> HP: ${char.attack} </p>
           <button> Choose me! </button>
         </div>
-        </div>
       </div>`
+      cardDiv.className = "col sm12 m3"
 let charactersDiv = document.querySelector(".row")
 charactersDiv.append(cardDiv)
   })
-  // let charDiv= document.querySelector(renderArea)
-  // let charImg= document.createElement("img")
-  // charImg.setAttribute('src', character.imageUrl)
-  // charDiv.append(charImg)
+ 
 };
 
 
