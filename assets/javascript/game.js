@@ -15,7 +15,23 @@ let characters = [{
     enemyAttackBack: 15,
     info: "I am charmander, I am weak against water"
   
-  }]
+  },{
+  name: "Evee",
+    hp: 150,
+    attack: 15,
+    imageUrl: "assets/images/evee.png",
+    enemyAttackBack: 15,
+    info: "I am Evee, I am weak against water"
+  },{
+    name: "Bulbasaur",
+    hp: 150,
+    attack: 15,
+    imageUrl: "assets/images/bulbasaur.jpeg",
+    enemyAttackBack: 15,
+    info: "I am charmander, I am weak against water"
+  
+  }
+]
 //Populates when user selects a character
 let attacker;
 
@@ -42,7 +58,7 @@ let renderCharacter = () => {
     cardDiv.innerHTML = ` 
     
     <div class="card">
-    <div class="col s12 m6">
+    <div class="col s12 m4">
         <div class="card-image">
           <img class = "image" src="${char.imageUrl}">
         </div>
