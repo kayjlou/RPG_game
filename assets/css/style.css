@@ -1,18 +1,16 @@
-.image{
+/* .image{
     width: 100px;
     height: 100px;
-}
+} */
 
 .card-image{
     width: 100px;
     height: 100px;
+    margin: auto;
 }
 
-.characterDiv{
-    width: 600px;
-}
 
 .card{
-    height: 350px;
-    width: 200px;
+    /* height: 350px; */
+    width: 220px;
 }

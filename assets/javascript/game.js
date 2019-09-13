@@ -56,9 +56,8 @@ let renderCharacter = () => {
     console.log(char)
     let cardDiv = document.createElement('div')
     cardDiv.innerHTML = ` 
-    
+    <div class="col s12 m3">
     <div class="card">
-    <div class="col s12 m4">
         <div class="card-image">
           <img class = "image" src="${char.imageUrl}">
         </div>
