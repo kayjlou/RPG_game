@@ -1,4 +1,9 @@
 .image{
-    width: 150px;
-    height: auto
+    width: 100px;
+    height: 100px;
+}
+
+.card-image{
+    width: 100px;
+    height: 100px;
 }

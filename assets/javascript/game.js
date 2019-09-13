@@ -40,12 +40,14 @@ let renderCharacter = () => {
     console.log(char)
     let cardDiv = document.createElement('div')
     cardDiv.innerHTML = ` 
+    
     <div class="card">
+    <div class="col s12 m6">
         <div class="card-image">
           <img class = "image" src="${char.imageUrl}">
-          <span class="card-title">Card Title</span>
         </div>
         <div class="card-content">
+        <h4 class="card-title">${char.name}</h4>
           <p>${char.info}</p>
         </div>
         <div class="card-action">
@@ -53,8 +55,9 @@ let renderCharacter = () => {
           <p> HP: ${char.attack} </p>
           <button> Choose me! </button>
         </div>
+        </div>
       </div>`
-let charactersDiv = document.querySelector(".characterDiv")
+let charactersDiv = document.querySelector(".row")
 charactersDiv.append(cardDiv)
   })
   // let charDiv= document.querySelector(renderArea)
