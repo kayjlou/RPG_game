@@ -56,7 +56,6 @@ let renderCharacter = () => {
     console.log(char)
     let cardDiv = document.createElement('div')
     cardDiv.innerHTML = ` 
-    
     <div class="card">
         <div class="card-image">
           <img class = "image" src="${char.imageUrl}">
@@ -68,7 +67,7 @@ let renderCharacter = () => {
         <div class="card-action">
           <p> Attack : ${char.attack} </p>
           <p> HP: ${char.attack} </p>
-          <button> Choose me! </button>
+          <button id = ${char.name} onclick=startGame(event.target.id)> Choose me! </button>
         </div>
       </div>`
       cardDiv.className = "col sm12 m3"
@@ -78,20 +77,59 @@ charactersDiv.append(cardDiv)
  
 };
 
+renderCharacter()
 
+//onclick function to trigger opponent/attacker
+let startGame=(name)=>{
+  console.log(name)
+  switch(name){
+    case bulbasaur:
+      console.log("you chose bulbasaur")
+  }
+
+
+  
+
+}
 
 //Run game
-renderCharacter();
+let selectCharacter=(attacker)=>{
+  document.querySelector('.attacker').innerHtml = 
+  `<div class="card ${attacker.name}">
+  <div class="card-image">
+    <img class = "image" src="${attacker.imageUrl}">
+  </div>
+  <div class="card-content">
+  <h4 class="card-title">${attacker.name}</h4>
+    <p>${attacker.info}</p>
+  </div>
+  <div class="card-action">
+    <p> Attack : ${char.attack} </p>
+    <p> HP: ${char.attack} </p>
+  </div>
+</div>
+  `
 
-//This function will update the slected player or the current defender - if none it will also place the character based on the render area chosen
-// 
-//   //empty area first so we can re-render new object
-// 
+}
+
 
 //This function will render the available-to-attack enemeies. This should be run once after a character has been selected. 
-let renderEnemies = (oppArray) =>{
-  //for loop
-  //render
+let renderEnemies = (opponent) =>{
+  document.querySelector('.opponent').innerHtml = 
+  `<div class="card ${opponent.name}">
+  <div class="card-image">
+    <img class = "image" src="${opponent.imageUrl}">
+  </div>
+  <div class="card-content">
+  <h4 class="card-title">${attacker.name}</h4>
+    <p>${opponent.info}</p>
+  </div>
+  <div class="card-action">
+    <p> Attack : ${opponent.attack} </p>
+    <p> HP: ${opponent.attack} </p>
+  </div>
+</div>
+  `
 }
 
 //Function to handle rendering game messages
@@ -114,3 +152,4 @@ let reset = (resultMessage) =>{
 //function to clear the game message section
 
 
+startGame()

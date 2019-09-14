@@ -17,6 +17,10 @@
 }
 
 .characterDiv{
-    width: 80%;
+    width: 75%;
     margin: auto
+}
+
+.card-content{
+    padding: 2px;
 }
