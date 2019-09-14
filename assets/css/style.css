@@ -28,3 +28,7 @@
 .hide {
     visibility: hidden;
 }
+
+.button{
+    padding-top: 100px;
+}
