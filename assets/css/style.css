@@ -24,3 +24,7 @@
 .card-content{
     padding: 2px;
 }
+
+.hide {
+    visibility: hidden;
+}

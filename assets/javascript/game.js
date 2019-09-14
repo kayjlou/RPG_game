@@ -1,46 +1,44 @@
 //Create an object that holds characters
 let characters = [{
     name: "Pikachu",
+    id: 0,
     hp: 150,
-    attack: 15,
     imageUrl: "assets/images/pikachu.jpeg",
-    enemyAttackBack: 15,
     info: "I am Pika, I love to zap things"
 
   },{
     name: "Charmander",
+    id: 1,
     hp: 150,
-    attack: 15,
     imageUrl: "assets/images/charmander.png",
-    enemyAttackBack: 15,
     info: "I am charmander, I am weak against water"
   
   },{
   name: "Evee",
+    id: 2,
     hp: 150,
-    attack: 15,
     imageUrl: "assets/images/evee.png",
-    enemyAttackBack: 15,
     info: "I am Evee, I am weak against water"
   },{
     name: "Bulbasaur",
+    id: 3,
     hp: 150,
-    attack: 15,
     imageUrl: "assets/images/bulbasaur.jpeg",
-    enemyAttackBack: 15,
     info: "I am charmander, I am weak against water"
   
   }
 ]
 //Populates when user selects a character
-let attacker;
+// let attacker;
 
 //Holds characters that user did not select
 let leftovers = [];
 
 //Populated when player chooses an opponent
-let opponent;
+// let opponent;
 
+let isAttacker = false
+let isOpponent = false
 //Keep track of turns during combat - used for calcuating player damage
 
 //Tracks number of defeated opponents
@@ -52,8 +50,6 @@ let opponent;
 
 let renderCharacter = () => {
   characters.forEach(char=>{
-    //create card
-    console.log(char)
     let cardDiv = document.createElement('div')
     cardDiv.innerHTML = ` 
     <div class="card">
@@ -65,9 +61,8 @@ let renderCharacter = () => {
           <p>${char.info}</p>
         </div>
         <div class="card-action">
-          <p> Attack : ${char.attack} </p>
-          <p> HP: ${char.attack} </p>
-          <button id = ${char.name} onclick=startGame(event.target.id)> Choose me! </button>
+          <p> HP: ${char.hp} </p>
+          <button id = ${char.id}> Choose me! </button>
         </div>
       </div>`
       cardDiv.className = "col sm12 m3"
@@ -80,56 +75,75 @@ charactersDiv.append(cardDiv)
 renderCharacter()
 
 //onclick function to trigger opponent/attacker
-let startGame=(name)=>{
-  console.log(name)
-  switch(name){
-    case bulbasaur:
-      console.log("you chose bulbasaur")
+document.addEventListener('click', ({
+  target: e
+}) =>{
+  if (!isAttacker){
+    console.log("running select attacker")
+    selectCharacter(characters[e.id])
+  } else if (!isOpponent){ 
+    console.log("running select opponent")
+    selectOpp(characters[e.id])
   }
+})
 
 
   
 
-}
+
 
 //Run game
-let selectCharacter=(attacker)=>{
-  document.querySelector('.attacker').innerHtml = 
-  `<div class="card ${attacker.name}">
-  <div class="card-image">
-    <img class = "image" src="${attacker.imageUrl}">
-  </div>
-  <div class="card-content">
-  <h4 class="card-title">${attacker.name}</h4>
-    <p>${attacker.info}</p>
-  </div>
-  <div class="card-action">
-    <p> Attack : ${char.attack} </p>
-    <p> HP: ${char.attack} </p>
-  </div>
-</div>
-  `
+let selectCharacter=(char)=>{
+  // let attacker = char
+  isAttacker = true
+  console.log(`your characters is ${char.name}`)
+  let attackerDiv = document.createElement('div')
+  attackerDiv.innerHTML = ` 
+  <div class="card">
+      <div class="card-image">
+        <img class = "image" src="${char.imageUrl}">
+      </div>
+      <div class="card-content">
+      <h4 class="card-title">${char.name}</h4>
+        <p>${char.info}</p>
+      </div>
+      <div class="card-action">
+        <p> HP: ${char.hp} </p>
+        <button id = ${char.id}> Choose me! </button>
+      </div>
+    </div>`
+    attackerDiv.className = "col sm12 m3"
+let attacker = document.querySelector(".attacker")
+attacker.append(attackerDiv)
+//Set other card as display none
 
 }
 
 
 //This function will render the available-to-attack enemeies. This should be run once after a character has been selected. 
-let renderEnemies = (opponent) =>{
-  document.querySelector('.opponent').innerHtml = 
-  `<div class="card ${opponent.name}">
-  <div class="card-image">
-    <img class = "image" src="${opponent.imageUrl}">
-  </div>
-  <div class="card-content">
-  <h4 class="card-title">${attacker.name}</h4>
-    <p>${opponent.info}</p>
-  </div>
-  <div class="card-action">
-    <p> Attack : ${opponent.attack} </p>
-    <p> HP: ${opponent.attack} </p>
-  </div>
-</div>
-  `
+let selectOpp = (char) =>{
+  if (isAttacker){
+  isOpponent = true
+  let oppDiv = document.createElement('div')
+  oppDiv.innerHTML = ` 
+  <div class="card">
+      <div class="card-image">
+        <img class = "image" src="${char.imageUrl}">
+      </div>
+      <div class="card-content">
+      <h4 class="card-title">${char.name}</h4>
+        <p>${char.info}</p>
+      </div>
+      <div class="card-action">
+        <p> HP: ${char.hp} </p>
+        <button id = ${char.id}> Choose me! </button>
+      </div>
+    </div>`
+    oppDiv.className = "col sm12 m3"
+let opponent= document.querySelector(".opponent")
+opponent.append(oppDiv)
+document.querySelecter('.')
+}
 }
 
 //Function to handle rendering game messages
@@ -151,5 +165,3 @@ let reset = (resultMessage) =>{
 
 //function to clear the game message section
 
-
-startGame()
