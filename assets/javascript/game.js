@@ -52,7 +52,7 @@ let renderCharacter = () => {
   characters.forEach(char=>{
     let cardDiv = document.createElement('div')
     cardDiv.innerHTML = ` 
-    <div class="card">
+    <div class="card ${char.name} ">
         <div class="card-image">
           <img class = "image" src="${char.imageUrl}">
         </div>
@@ -65,7 +65,7 @@ let renderCharacter = () => {
           <button id = ${char.id}> Choose me! </button>
         </div>
       </div>`
-      cardDiv.className = "col sm12 m3"
+      cardDiv.className = "col sm12 m3 "
 let charactersDiv = document.querySelector(".row")
 charactersDiv.append(cardDiv)
   })
@@ -96,7 +96,9 @@ document.addEventListener('click', ({
 let selectCharacter=(char)=>{
   // let attacker = char
   isAttacker = true
+  let target = char.name
   console.log(`your characters is ${char.name}`)
+  document.querySelector(`.${char.name}`).className = "hide"
   let attackerDiv = document.createElement('div')
   attackerDiv.innerHTML = ` 
   <div class="card">
@@ -124,6 +126,7 @@ attacker.append(attackerDiv)
 let selectOpp = (char) =>{
   if (isAttacker){
   isOpponent = true
+  document.querySelector(`.${char.name}`).className = "hide"
   let oppDiv = document.createElement('div')
   oppDiv.innerHTML = ` 
   <div class="card">
@@ -142,7 +145,6 @@ let selectOpp = (char) =>{
     oppDiv.className = "col sm12 m3"
 let opponent= document.querySelector(".opponent")
 opponent.append(oppDiv)
-document.querySelecter('.')
 }
 }
 
