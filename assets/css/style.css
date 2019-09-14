@@ -13,4 +13,10 @@
 .card{
     /* height: 350px; */
     width: 220px;
+    padding: 10px;
+}
+
+.characterDiv{
+    width: 80%;
+    margin: auto
 }
