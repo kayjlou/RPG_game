@@ -79,10 +79,8 @@ document.addEventListener('click', ({
   target: e
 }) =>{
   if (!isAttacker){
-    console.log("running select attacker")
     selectCharacter(characters[e.id])
   } else if (!isOpponent){ 
-    console.log("running select opponent")
     selectOpp(characters[e.id])
   }
 })
@@ -92,7 +90,7 @@ document.addEventListener('click', ({
 
 
 
-//Run game
+//Selects attacker
 let selectCharacter=(char)=>{
   // let attacker = char
   isAttacker = true
@@ -145,6 +143,10 @@ let selectOpp = (char) =>{
     oppDiv.className = "col sm12 m3"
 let opponent= document.querySelector(".opponent")
 opponent.append(oppDiv)
+let battleBtn = document.createElement('button')
+battleBtn.className = "waves-effect waves-light btn-small"
+battleBtn.innerText = "BATTLE"
+document.querySelector('.button').append(battleBtn)
 }
 }
 
@@ -155,11 +157,15 @@ let renderMessage = () =>{
 }
 
 //Function which handles restarting the game ater victory or defeat
-let reset = (resultMessage) =>{
+let resetGame = (resultMessage) =>{
   //When restart button is clicked, reload the page
-
+document.querySelector('.attacker').innerHtml = ""
+document.querySelector('.opponent').innerHTML = ""
+document.querySelectoer('.row').innerHTML = ""
+renderCharacter()
 }
 
+// let nextOpp = ()
 //Build div that will display the victory/defeat message
 // let 
 
