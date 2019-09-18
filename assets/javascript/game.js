@@ -39,7 +39,7 @@ let oppChar;
 
 let isAttacker = false
 let isOpponent = false
-isAlive = true
+let isAlive = true
 
 let attackPoints = 0
 //Keep track of turns during combat - used for calcuating player damage
@@ -72,7 +72,6 @@ let renderCharacter = () => {
 let charactersDiv = document.querySelector(".row")
 charactersDiv.append(cardDiv)
   })
- 
 };
 
 
@@ -82,20 +81,17 @@ document.addEventListener('click', ({
   target: e
 }) =>{
   if (!isAttacker){
-    let attackChar = selectCharacter(characters[e.id])
+   selectCharacter(characters[e.id])
   } else if (!isOpponent){ 
-   let oppChar = selectOpp(characters[e.id])
+   selectOpp(characters[e.id])
   }
 })
 
 
   
 
-
-
 //Selects attacker
 let selectCharacter=(char)=>{
-  // let attacker = char
   isAttacker = true
   attackChar = characters[char.id]
   console.log(`your characters is ${char.name}`)
@@ -116,9 +112,7 @@ let selectCharacter=(char)=>{
     attackerDiv.className = "col sm12 m3"
 let attacker = document.querySelector(".attacker")
 attacker.append(attackerDiv)
-//Set other card as display none
 renderMessage()
-
 }
 
 
@@ -127,6 +121,7 @@ let selectOpp = (char) =>{
   if (isAttacker){
   isOpponent = true
   oppChar = characters[char.id]
+  console.log(`the opponent is ${char.name}`)
   document.querySelector(`.${char.name}`).className = "hide"
   let oppDiv = document.createElement('div')
   oppDiv.innerHTML = ` 
@@ -200,8 +195,9 @@ else if(opponentHp<0){
   console.log("you won")
   document.querySelector('#oppHp').textContent = "HP: 0" 
   document.querySelector('#attackerHp').textContent = "HP: " + attackerHp
-  document.querySelector('.gameMsg').textContent = "Congrats you won!!"
-  resetGame()
+  document.querySelector('.gameMsg').textContent = "Congrats you won!! Choose another opponent"
+  document.querySelector('.opponent').textContent = ""
+  isOpponent= false
 }
 }
 
