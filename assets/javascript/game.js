@@ -186,16 +186,22 @@ if (attackerHp>0 && opponentHp>0){
   console.log("keep battling")
   document.querySelector('#oppHp').textContent = "HP: " + opponentHp
   document.querySelector('#attackerHp').textContent = "HP: " + attackerHp
+  document.querySelector('.gameMsg').textContent = "Keep going!!!"
 }
 else if(attackerHp<0){
   console.log("you lost")
   document.querySelector('#oppHp').textContent = "HP: " + opponentHp
   document.querySelector('#attackerHp').textContent = "HP: 0"
+  document.querySelector('.gameMsg').textContent = "YOU LOST!!"
+  resetGame()
+
 } 
 else if(opponentHp<0){
   console.log("you won")
   document.querySelector('#oppHp').textContent = "HP: 0" 
   document.querySelector('#attackerHp').textContent = "HP: " + attackerHp
+  document.querySelector('.gameMsg').textContent = "Congrats you won!!"
+  resetGame()
 }
 }
 
@@ -205,6 +211,8 @@ let resetGame = () =>{
 document.querySelector('.attacker').innerHtml = ""
 document.querySelector('.opponent').innerHTML = ""
 document.querySelector('.row').innerHTML = ""
+document.querySelector('.battleDiv').innerHTML = ""
+document.querySelector('.gameMsg').textContent = ""
 isAttacker = false
 isOpponent = false
 renderCharacter()
